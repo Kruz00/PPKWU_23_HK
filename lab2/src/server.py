@@ -3,16 +3,17 @@ import http.server
 import socketserver
 import os
 from time import strftime, time
-
-#print('source code for "http.server":', http.server.__file__)
-
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    cmd_param = request.args.get('cmd', type=str)
+    str_param = request.args.get('str', type=str)
+    return "<p>Hello World! " + str(cmd_param) + " " + str(str_param) + "\n" + strftime("%H:%M:%S") + "</p>"
+
 
 # --- main ---
 
