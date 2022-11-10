@@ -10,7 +10,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello World! </p>"
+    str_param = request.args.get('str', type=str)
+    return "<p>" + str(str_param) + "</p>"
 
 
 # --- main ---
