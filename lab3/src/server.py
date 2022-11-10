@@ -9,7 +9,14 @@ app = Flask(__name__)
 
 
 def analyze_str(param_str: str):
-    res_str = {"lowercase": 0, "uppercase": 0, "digits": 0, "special": 0}
+    lowercase = sum(1 for c in param_str if c.islower())
+    uppercase = sum(1 for c in param_str if c.isupper())
+    digits = sum(1 for c in param_str if c.isdigit())
+    special = len(param_str) - sum([lowercase, uppercase, digits])
+    res_str = {"lowercase": lowercase,
+               "uppercase": lowercase,
+               "digits": lowercase,
+               "special": special}
     return res_str
 
 
