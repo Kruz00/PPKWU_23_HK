@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-import http.server
-import socketserver
-import os
-from time import strftime, time
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -14,8 +10,8 @@ def analyze_str(param_str: str):
     digits = sum(1 for c in param_str if c.isdigit())
     special = len(param_str) - sum([lowercase, uppercase, digits])
     res_str = {"lowercase": lowercase,
-               "uppercase": lowercase,
-               "digits": lowercase,
+               "uppercase": uppercase,
+               "digits": digits,
                "special": special}
     return res_str
 
