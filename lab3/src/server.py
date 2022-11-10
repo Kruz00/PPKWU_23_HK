@@ -8,10 +8,16 @@ from flask import Flask, request
 app = Flask(__name__)
 
 
+def analyze_str(param_str: str):
+    res_str = {"lowercase": 0, "uppercase": 0, "digits": 0, "special": 0}
+    return res_str
+
+
 @app.route("/")
 def hello_world():
     str_param = request.args.get('str', type=str)
-    return "<p>" + str(str_param) + "</p>"
+
+    return analyze_str(str_param)
 
 
 # --- main ---
