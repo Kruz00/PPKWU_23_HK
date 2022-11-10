@@ -19,7 +19,6 @@ def analyze_str(param_str: str):
 @app.route("/")
 def hello_world():
     str_param = request.args.get('str', type=str)
-
     return analyze_str(str_param)
 
 
