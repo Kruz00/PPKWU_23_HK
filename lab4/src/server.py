@@ -5,8 +5,10 @@ app = Flask(__name__)
 
 
 def calculate(num1: int, num2: int):
+    _sum = num1 + num2
+
     res_str = {
-        "sum": 0,
+        "sum": _sum,
         "sub": 0,
         "mul": 0,
         "div": 0,
