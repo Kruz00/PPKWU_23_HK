@@ -5,13 +5,13 @@ app = Flask(__name__)
 
 
 def calculate(num1: int, num2: int):
-
-    res_str = {"sum": 0,
-               "sub": 0,
-               "mul": 0,
-               "div": 0,
-               "mod": 0
-               }
+    res_str = {
+        "sum": 0,
+        "sub": 0,
+        "mul": 0,
+        "div": 0,
+        "mod": 0
+    }
     return res_str
 
 
