@@ -4,22 +4,22 @@ from flask import Flask, request
 app = Flask(__name__)
 
 
-def analyze_str(param_str: str):
-    lowercase = sum(1 for c in param_str if c.islower())
-    uppercase = sum(1 for c in param_str if c.isupper())
-    digits = sum(1 for c in param_str if c.isdigit())
-    special = len(param_str) - sum([lowercase, uppercase, digits])
-    res_str = {"lowercase": lowercase,
-               "uppercase": uppercase,
-               "digits": digits,
-               "special": special}
+def calculate(num1: int, num2: int):
+
+    res_str = {"sum": 0,
+               "sub": 0,
+               "mul": 0,
+               "div": 0,
+               "mod": 0
+               }
     return res_str
 
 
 @app.route("/")
 def hello_world():
-    str_param = request.args.get('str', type=str)
-    return analyze_str(str_param)
+    num1_param = request.args.get('num1', type=int)
+    num2_param = request.args.get('num2', type=int)
+    return calculate(num1_param, num2_param)
 
 
 # --- main ---
