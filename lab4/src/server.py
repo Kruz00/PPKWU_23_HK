@@ -5,14 +5,18 @@ app = Flask(__name__)
 
 
 def calculate(num1: int, num2: int):
-    _sum = num1 + num2
+    _sum = int(num1) + int(num2)
+    _sub = int(num1) - int(num2)
+    _mul = int(num1) * int(num2)
+    _div = int(num1) // int(num2)
+    _mod = int(num1) % int(num2)
 
     res_str = {
         "sum": _sum,
-        "sub": 0,
-        "mul": 0,
-        "div": 0,
-        "mod": 0
+        "sub": _sub,
+        "mul": _mul,
+        "div": _div,
+        "mod": _mod
     }
     return res_str
 
