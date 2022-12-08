@@ -42,11 +42,6 @@ def handle_post_request():
     if "num1" in json_request and "num2" in json_request:
         json_response.update(calculate(json_request["num1"], json_request["num2"]))
 
-
-
-    # num1_param = request.args.get('num1', type=int)
-    # num2_param = request.args.get('num2', type=int)
-    # return calculate(num1_param, num2_param)
     return json_response
 
 
