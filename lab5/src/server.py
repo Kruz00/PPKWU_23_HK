@@ -21,6 +21,18 @@ def calculate(num1: int, num2: int):
     return res_str
 
 
+def analyze_str(param_str: str):
+    lowercase = sum(1 for c in param_str if c.islower())
+    uppercase = sum(1 for c in param_str if c.isupper())
+    digits = sum(1 for c in param_str if c.isdigit())
+    special = len(param_str) - sum([lowercase, uppercase, digits])
+    res_str = {"lowercase": lowercase,
+               "uppercase": uppercase,
+               "digits": digits,
+               "special": special}
+    return res_str
+
+
 @app.route("/")
 def hello_world():
     num1_param = request.args.get('num1', type=int)
