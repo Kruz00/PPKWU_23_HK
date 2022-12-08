@@ -35,12 +35,15 @@ def analyze_str(param_str: str):
 
 @app.route("/", methods=['POST'])
 def handle_post_request():
-    json_data = request.json
+    json_request = request.json
+    json_response = {}
+    if "str" in json_request:
+        json_response = analyze_str(json_request[str])
 
     # num1_param = request.args.get('num1', type=int)
     # num2_param = request.args.get('num2', type=int)
     # return calculate(num1_param, num2_param)
-    return json_data
+    return json_response
 
 
 # --- main ---
