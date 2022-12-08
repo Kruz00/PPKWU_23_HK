@@ -34,10 +34,12 @@ def analyze_str(param_str: str):
 
 
 @app.route("/")
-def hello_world():
-    num1_param = request.args.get('num1', type=int)
-    num2_param = request.args.get('num2', type=int)
-    return calculate(num1_param, num2_param)
+def handle_post_request():
+    print(request.json)
+
+    # num1_param = request.args.get('num1', type=int)
+    # num2_param = request.args.get('num2', type=int)
+    # return calculate(num1_param, num2_param)
 
 
 # --- main ---
