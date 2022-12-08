@@ -33,13 +33,14 @@ def analyze_str(param_str: str):
     return res_str
 
 
-@app.route("/")
+@app.route("/", methods=['POST'])
 def handle_post_request():
-    print(request.json)
+    json_data = request.json
 
     # num1_param = request.args.get('num1', type=int)
     # num2_param = request.args.get('num2', type=int)
     # return calculate(num1_param, num2_param)
+    return json_data
 
 
 # --- main ---
