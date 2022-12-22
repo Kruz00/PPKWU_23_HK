@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from flask import Flask, request, Response
 import xml.etree.ElementTree as ET
+from dicttoxml import dicttoxml
 
 app = Flask(__name__)
 
@@ -41,20 +42,19 @@ def parse_xml(xml):
 @app.route("/", methods=['POST'])
 def handle_post_request():
     # json_request = request.json
-    # json_response = {}
-    # if "str" in json_request:
-    #     json_response.update(analyze_str(json_request["str"]))
+    json_response = {}
+    root = ET.fromstring(request.data)
+    tag = root.tag
+    if "str" == root.tag:
+        json_response.update(analyze_str(root.text))
     # if "num1" in json_request and "num2" in json_request:
     #     json_response.update(calculate(json_request["num1"], json_request["num2"]))
 
-    root = ET.fromstring(request.data)
-    tag = root.tag
     # if tag == "str":
     #     json_response.update(analyze_str(json_request["str"]))
-
-    r = Response(response="TEST OK", status=200, mimetype="application/xml")
+    response_xml = dicttoxml(json_response, attr_type=False)
+    r = Response(response=response_xml, status=200, mimetype="application/xml")
     r.headers["Content-Type"] = "text/xml; charset=utf-8"
-
     return r
 
 
