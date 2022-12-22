@@ -48,12 +48,14 @@ def handle_post_request():
     #     json_response.update(calculate(json_request["num1"], json_request["num2"]))
 
     root = ET.fromstring(request.data)
-    print(root.tag)
+    tag = root.tag
+    if tag == "str":
+        json_response.update(analyze_str(json_request["str"]))
 
     r = Response(response="TEST OK", status=200, mimetype="application/xml")
     r.headers["Content-Type"] = "text/xml; charset=utf-8"
 
-    return "OK"
+    return r
 
 
 # --- main ---
