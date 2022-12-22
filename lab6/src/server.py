@@ -48,11 +48,11 @@ def handle_post_request():
         json_response.update(analyze_str(root.text))
     else:
         for child in root:
-            if "str" == root.tag:
+            if "str" == child.tag:
                 json_response.update(analyze_str(child.text))
-            if "num1" == root.tag:
+            if "num1" == child.tag:
                 num1 = int(child.text)
-            if "num2" == root.tag:
+            if "num2" == child.tag:
                 num2 = int(child.text)
     if num1 is not None and num2 is not None:
         json_response.update(calculate(num1, num2))
