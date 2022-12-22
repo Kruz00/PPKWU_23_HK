@@ -49,8 +49,8 @@ def handle_post_request():
 
     root = ET.fromstring(request.data)
     tag = root.tag
-    if tag == "str":
-        json_response.update(analyze_str(json_request["str"]))
+    # if tag == "str":
+    #     json_response.update(analyze_str(json_request["str"]))
 
     r = Response(response="TEST OK", status=200, mimetype="application/xml")
     r.headers["Content-Type"] = "text/xml; charset=utf-8"
