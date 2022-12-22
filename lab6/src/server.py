@@ -45,8 +45,20 @@ def handle_post_request():
     json_response = {}
     root = ET.fromstring(request.data)
     tag = root.tag
+    num1 = None
+    num2 = None
+
     if "str" == root.tag:
         json_response.update(analyze_str(root.text))
+    else:
+        for child in root:
+            if "str" == root.tag:
+                json_response.update(analyze_str(child.text))
+            if "num1" == root.tag:
+                num1 = int(child.text)
+            if "num2" == root.tag:
+                num2 = int(child.text)
+
     # if "num1" in json_request and "num2" in json_request:
     #     json_response.update(calculate(json_request["num1"], json_request["num2"]))
 
