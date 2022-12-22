@@ -37,10 +37,8 @@ def analyze_str(param_str: str):
 
 @app.route("/", methods=['POST'])
 def handle_post_request():
-    # json_request = request.json
     json_response = {}
     root = ET.fromstring(request.data)
-    tag = root.tag
     num1 = None
     num2 = None
 
