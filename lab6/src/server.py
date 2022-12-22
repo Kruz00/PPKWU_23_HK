@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-from flask import Flask, request
+from flask import Flask, request, Response
+import xml.etree.ElementTree as ET
 
 app = Flask(__name__)
 
@@ -33,16 +34,26 @@ def analyze_str(param_str: str):
     return res_str
 
 
+def parse_xml(xml):
+    pass
+
+
 @app.route("/", methods=['POST'])
 def handle_post_request():
-    json_request = request.json
-    json_response = {}
-    if "str" in json_request:
-        json_response.update(analyze_str(json_request["str"]))
-    if "num1" in json_request and "num2" in json_request:
-        json_response.update(calculate(json_request["num1"], json_request["num2"]))
+    # json_request = request.json
+    # json_response = {}
+    # if "str" in json_request:
+    #     json_response.update(analyze_str(json_request["str"]))
+    # if "num1" in json_request and "num2" in json_request:
+    #     json_response.update(calculate(json_request["num1"], json_request["num2"]))
 
-    return json_response
+    root = ET.fromstring(request.data)
+    print(root.tag)
+
+    r = Response(response="TEST OK", status=200, mimetype="application/xml")
+    r.headers["Content-Type"] = "text/xml; charset=utf-8"
+
+    return "OK"
 
 
 # --- main ---
