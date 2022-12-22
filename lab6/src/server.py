@@ -35,10 +35,6 @@ def analyze_str(param_str: str):
     return res_str
 
 
-def parse_xml(xml):
-    pass
-
-
 @app.route("/", methods=['POST'])
 def handle_post_request():
     # json_request = request.json
@@ -58,6 +54,8 @@ def handle_post_request():
                 num1 = int(child.text)
             if "num2" == root.tag:
                 num2 = int(child.text)
+    if num1 is not None and num2 is not None:
+        json_response.update(calculate(num1, num2))
 
     # if "num1" in json_request and "num2" in json_request:
     #     json_response.update(calculate(json_request["num1"], json_request["num2"]))
