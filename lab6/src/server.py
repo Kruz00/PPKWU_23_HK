@@ -57,11 +57,6 @@ def handle_post_request():
     if num1 is not None and num2 is not None:
         json_response.update(calculate(num1, num2))
 
-    # if "num1" in json_request and "num2" in json_request:
-    #     json_response.update(calculate(json_request["num1"], json_request["num2"]))
-
-    # if tag == "str":
-    #     json_response.update(analyze_str(json_request["str"]))
     response_xml = dicttoxml(json_response, attr_type=False)
     r = Response(response=response_xml, status=200, mimetype="application/xml")
     r.headers["Content-Type"] = "text/xml; charset=utf-8"
